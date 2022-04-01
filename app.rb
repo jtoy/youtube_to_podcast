@@ -1,4 +1,5 @@
-require 'bundler' ; Bundler.require
+require 'bundler/setup'
+require 'sinatra'
 require 'digest'
 require 'fileutils'
 require 'erb'
