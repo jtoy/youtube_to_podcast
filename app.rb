@@ -4,8 +4,15 @@ require 'digest'
 require 'fileutils'
 require 'erb'
 require 'rss'
+require 'logger'
 
 FileUtils.mkdir_p "content"
+FileUtils.mkdir_p "log"
+error_log = ::File.new("log/error.log","a+")
+error_log.sync = true
+before {
+  env["rack.errors"] = error_log
+}
 
 get '/' do
   if params[:feed]
