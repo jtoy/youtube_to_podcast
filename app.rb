@@ -3,6 +3,7 @@ require 'sinatra'
 require 'digest'
 require 'fileutils'
 require 'erb'
+require 'rss'
 
 FileUtils.mkdir_p "content"
 
