@@ -23,7 +23,7 @@ get '/' do
     if !File.exists?(ts) || (File.exists?(dir) && File.exists?(ts) && (Time.now - 3600*24) > File.atime(ts))
       FileUtils.touch(ts)
       puts cmd
-      Thread.new { r = `#{cmd}`; puts r }
+      Thread.new { puts 'starting download'; r = `#{cmd}`; puts r }
     end
     rss = RSS::Maker.make("atom") do |maker|
       maker.channel.updated = File.atime(ts)
